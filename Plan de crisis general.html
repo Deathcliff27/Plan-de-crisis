@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Plan de Crisis Integral</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            margin: -20px -20px 30px -20px;
+            border-radius: 15px 15px 0 0;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #e67e22;
+        }
+        
+        .intro h2 {
+            color: #d35400;
+            margin-bottom: 15px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-left: 5px solid #3498db;
+        }
+        
+        .section h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            margin: 20px 0 15px 0;
+            font-size: 1.3em;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        
+        .emergency {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .emergency h2 {
+            color: #c0392b;
+        }
+        
+        .technique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .technique-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #9b59b6;
+            transition: transform 0.3s ease;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .technique-card h4 {
+            color: #8e44ad;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .warning-signs {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            border-left: 5px solid #f39c12;
+        }
+        
+        .warning-signs h2 {
+            color: white;
+        }
+        
+        .interactive-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-left: 5px solid #1abc9c;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .strategy-ranker {
+            margin-top: 20px;
+        }
+        
+        .strategy-item {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .strategy-item select {
+            padding: 8px;
+            border: 2px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .pocket-card {
+            background: white;
+            border: 2px dashed #95a5a6;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .progress-bar {
+            background: #ecf0f1;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .technique-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Mi Plan de Crisis Integral 🌟</h1>
+            <p>Herramientas de Autocuidado y Regulación Emocional</p>
+        </div>
+        
+        <div class="intro">
+            <h2>💙 Tu Historia de Fortaleza</h2>
+            <p><strong>Este plan es tuyo.</strong> Es una colección de herramientas que te acompañarán en momentos difíciles. Recuerda: las crisis son temporales, pero tu capacidad de superarlas es permanente. Cada vez que uses estas técnicas, estás escribiendo una nueva página en tu historia de fortaleza y resistencia.</p>
+            <p><strong>📱 Llévalo siempre contigo</strong> - porque no podemos predecir cuándo necesitaremos estas herramientas de autocuidado.</p>
+        </div>
+        
+        <div class="emergency">
+            <h2>🚨 Si Estás en Peligro Inmediato</h2>
+            <ul class="step-list">
+                <li><strong>Colombia - Línea 123</strong> (Emergencias)</li>
+                <li><strong>Colombia - Línea 106</strong> (Escucha activa 24/7)</li>
+                <li><strong>WhatsApp:</strong> +57 300 754 8933 (Teléfono de la Esperanza)</li>
+                <li><strong>Llama a tu persona de confianza inmediatamente</strong></li>
+                <li><strong>Ve al servicio de urgencias más cercano</strong></li>
+            </ul>
+        </div>
+        
+        <div class="section warning-signs">
+            <h2><span class="icon">⚠️</span>Reconoce las Señales Tempranas</h2>
+            <p><strong>Tu cuerpo y mente te envían mensajes.</strong> Aprender a reconocerlos te da poder sobre la situación:</p>
+            
+            <h3>🔍 Factores de Riesgo (Lo que puede activar la crisis):</h3>
+            <ul>
+                <li>Días especialmente estresantes o conflictivos</li>
+                <li>Discusiones o conflictos interpersonales</li>
+                <li>Espacios con mucha gente (sobrestimulación)</li>
+                <li>Cuando las cosas no salen como esperabas</li>
+                <li>Haber suspendido medicamentos o terapia</li>
+                <li>Fatiga extrema o cambios en el sueño</li>
+            </ul>
+            
+            <h3>🚩 Señales de Alerta Temprana:</h3>
+            <ul>
+                <li>Pensamientos de "no puedo más" o "esto es imposible"</li>
+                <li>Observar objetos que podrían causar daño</li>
+                <li>Sensación de pérdida de control inminente</li>
+                <li>Recibir respuestas inesperadas o frustrantes</li>
+                <li>Aislamiento social o evitación</li>
+                <li>Cambios bruscos en el apetito o sueño</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🛡️</span>Paso 1: Técnicas de Estabilización Inmediata</h2>
+            <p><strong>🚨 ÚSALAS PRIMERO - Son las más rápidas (30 segundos a 5 minutos)</strong></p>
+            <p>Estas técnicas cambian tu fisiología <strong>inmediatamente</strong> para interrumpir la espiral de crisis. Funcionan porque activan tu sistema nervioso parasimpático (el que te calma) y resetean tu sistema de alarma interno.</p>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                <strong>💡 ¿Por qué funcionan tan rápido?</strong><br>
+                Tu cerebro primitivo (amígdala) responde a cambios físicos antes que a pensamientos. Al cambiar tu cuerpo, cambias tu mente automáticamente.
+            </div>
+            
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🧊 Cambio de Temperatura (Más Rápida: 30 segundos)</h4>
+                    <p><strong>Objetivo:</strong> Activar el "reflejo de buceo" que calma instantáneamente.</p>
+                    <ul>
+                        <li><strong>Agua helada en la cara:</strong> Llena las manos, sumerge rostro 15-30 segundos</li>
+                        <li><strong>Hielo en muñecas/nuca:</strong> Donde sientes el pulso, 2-3 minutos</li>
+                        <li><strong>Ducha fría:</strong> Solo la cara y cuello, 1-2 minutos</li>
+                        <li><strong>Mascarilla fría:</strong> Toalla húmeda fría en ojos y frente</li>
+                        <li><strong>Bebida helada:</strong> Sorbe muy lentamente, mantén en la boca</li>
+                    </ul>
+                    <p><em>💧 Truco rápido: Si no tienes hielo, agua del grifo muy fría funciona igual.</em></p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>💨 Respiración de Emergencia (1-2 minutos)</h4>
+                    <p><strong>Objetivo:</strong> Enviar señal de calma directa al cerebro.</p>
+                    <p><strong>🚨 Técnica Ultra-Rápida (30 segundos):</strong></p>
+                    <ul>
+                        <li>Exhala todo el aire de tus pulmones</li>
+                        <li>Inhala por nariz 4 segundos</li>
+                        <li>Mantén 4 segundos</li>
+                        <li>Exhala por boca 8 segundos (como si apagaras una vela)</li>
+                        <li>Repite solo 4-5 veces</li>
+                    </ul>
+                    <p><strong>💡 Clave:</strong> La exhalación larga es lo que más calma. Si te mareas, para un momento.</p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>💪 Activación Física Intensa (2-5 minutos)</h4>
+                    <p><strong>Objetivo:</strong> Quemar las hormonas del estrés (cortisol, adrenalina).</p>
+                    <p><strong>⚡ Opciones rápidas:</strong></p>
+                    <ul>
+                        <li><strong>Saltar:</strong> En el mismo lugar 30-60 segundos</li>
+                        <li><strong>Correr en el lugar:</strong> Levanta rodillas alto, 1-2 minutos</li>
+                        <li><strong>Flexiones/sentadillas:</strong> 10-20 repeticiones rápidas</li>
+                        <li><strong>Caminar rápido:</strong> Afuera o adentro, 5 minutos</li>
+                        <li><strong>Sacudir todo el cuerpo:</strong> Como animal mojándose, 30 segundos</li>
+                    </ul>
+                    <p><em>🏃 Importante: Para cuando sientas tu corazón acelerado, esa es la señal.</em></p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🤲 Relajación de Emergencia (3-5 minutos)</h4>
+                    <p><strong>Objetivo:</strong> Liberar tensión muscular acumulada.</p>
+                    <p><strong>🔥 Secuencia rápida:</strong></p>
+                    <ol>
+                        <li><strong>Manos:</strong> Cierra puños fuerte 5 seg → relaja 10 seg</li>
+                        <li><strong>Brazos:</strong> Flexiona bíceps fuerte 5 seg → relaja 10 seg</li>
+                        <li><strong>Hombros:</strong> Sube hacia orejas 5 seg → relaja 10 seg</li>
+                        <li><strong>Cara:</strong> Arruga toda la cara 5 seg → relaja 10 seg</li>
+                        <li><strong>Todo el cuerpo:</strong> Tensa todo 5 seg → relaja 10 seg</li>
+                    </ol>
+                    <p><em>💪 Nota: Cada relajación debe sentirse como "dejar caer" los músculos.</em></p>
+                </div>
+            </div>
+            
+            <div style="background: #d1ecf1; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #0dcaf0;">
+                <strong>⏱️ PROTOCOLO DE EMERGENCIA (Solo 2 minutos):</strong><br>
+                1. Agua fría en cara (30 seg) → 2. Respiración 4-4-8 (4 veces) → 3. Saltar en el lugar (30 seg) → 4. Respiración final (30 seg)
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🧘</span>Paso 2: Atención Plena - Anclaje en el Presente</h2>
+            <p><strong>Estas técnicas te traen al aquí y ahora</strong>, interrumpiendo los pensamientos en espiral:</p>
+            
+            <h3>🌟 Técnica 5-4-3-2-1 (Conexión a Tierra)</h3>
+            <p><strong>Objetivo:</strong> Traer tu mente al momento presente usando todos tus sentidos. Hazlo despacio y con atención:</p>
+            <ol class="step-list">
+                <li><strong>5 cosas que PUEDES VER</strong> 
+                    <br><em>Ejemplos: "Veo una planta verde con hojas brillantes, una pared blanca con una mancha pequeña, mis zapatos negros con cordones desatados, una ventana con marco de madera, un libro rojo en la mesa"</em></li>
+                <li><strong>4 cosas que PUEDES TOCAR</strong> 
+                    <br><em>Ejemplos: "Toco la textura rugosa de mi pantalón, la superficie lisa y fría de la mesa, el calor de mi piel en la frente, la suavidad del cojín donde estoy sentado"</em></li>
+                <li><strong>3 cosas que PUEDES ESCUCHAR</strong> 
+                    <br><em>Ejemplos: "Escucho el zumbido del refrigerador, voces lejanas en la calle, mi propia respiración lenta y profunda"</em></li>
+                <li><strong>2 cosas que PUEDES OLER</strong> 
+                    <br><em>Ejemplos: "Huelo el aroma del café que queda en mi taza, el perfume sutil de las flores en el jardín"</em></li>
+                <li><strong>1 cosa que PUEDES SABOREAR</strong> 
+                    <br><em>Ejemplos: "Saboreo el residuo dulce del té que tomé, o simplemente el sabor neutro de mi saliva"</em></li>
+            </ol>
+            
+            <h3>🫁 Respiración Consciente - Ejercicios Específicos</h3>
+            
+            <h4>🌬️ Respiración Abdominal (Básica)</h4>
+            <ol class="step-list">
+                <li>Siéntate o acuéstate cómodamente</li>
+                <li>Coloca una mano en el pecho, otra en el abdomen</li>
+                <li>Respira solo con el abdomen (la mano del pecho no se mueve)</li>
+                <li>Cuenta: "Inhalo 1, exhalo 1, inhalo 2, exhalo 2..." hasta 10</li>
+                <li>Si pierdes la cuenta, vuelve al 1 sin juzgarte</li>
+            </ol>
+            
+            <h4>📦 Respiración en Caja (Avanzada)</h4>
+            <ol class="step-list">
+                <li>Inhala por la nariz contando hasta 4</li>
+                <li>Retén el aire contando hasta 4</li>
+                <li>Exhala por la boca contando hasta 4</li>
+                <li>Mantén los pulmones vacíos contando hasta 4</li>
+                <li>Repite este ciclo 8 veces mínimo</li>
+            </ol>
+            
+            <h4>🌊 Respiración de Olas (Para ansiedad intensa)</h4>
+            <ol class="step-list">
+                <li>Imagina que tu respiración es como olas del mar</li>
+                <li>Inhala lentamente por 6 segundos (la ola sube)</li>
+                <li>Exhala aún más lento por 8 segundos (la ola baja)</li>
+                <li>Visualiza el agua llevándose tu tensión</li>
+                <li>Continúa hasta sentir más calma</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🎨</span>Paso 3: Distracción Saludable y Autocuidado</h2>
+            <p><strong>⏱️ Tiempo: 5-15 minutos | Mejor momento: Cuando ya lograste un poco de estabilidad</strong></p>
+            <p>Estas técnicas te ayudan a <strong>redirigir tu atención</strong> hacia actividades que nutren tu bienestar, interrumpiendo el ciclo de pensamientos negativos y dándote un respiro emocional necesario.</p>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                <strong>🧠 ¿Por qué funciona?</strong><br>
+                Tu cerebro no puede mantener dos focos de atención intensa al mismo tiempo. Al dirigir conscientemente tu atención hacia actividades placenteras y sensoriales, reduces la intensidad del malestar emocional.
+            </div>
+            
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🏃 Activación Física Suave</h4>
+                    <p><strong>Objetivo:</strong> Liberar endorfinas naturales y reducir hormonas del estrés.</p>
+                    <ul>
+                        <li><strong>Caminar en la naturaleza:</strong> Jardín, parque, incluso observar árboles desde la ventana</li>
+                        <li><strong>Bailar tu música favorita:</strong> Solo en tu cuarto, sin juzgarte</li>
+                        <li><strong>Yoga o estiramientos suaves:</strong> 5-10 minutos de movimientos lentos</li>
+                        <li><strong>Jardinería o tareas manuales:</strong> Regar plantas, organizar, limpiar suavemente</li>
+                        <li><strong>Ejercicio moderado:</strong> Bicicleta, natación, caminar en cinta</li>
+                    </ul>
+                    <p><em>🌿 Clave: Hazlo consciente, prestando atención a las sensaciones físicas.</em></p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🎵 Estimulación Sensorial Reconfortante</h4>
+                    <p><strong>Objetivo:</strong> Activar tu sistema nervioso parasimpático a través de los sentidos.</p>
+                    <ul>
+                        <li><strong>Música curativa:</strong> Clásica, naturaleza, binaural, o simplemente tus canciones favoritas</li>
+                        <li><strong>Aromas terapéuticos:</strong> Velas, incienso, aceites esenciales (lavanda, eucalipto)</li>
+                        <li><strong>Texturas reconfortantes:</strong> Manta suave, almohada de memoria, peluche</li>
+                        <li><strong>Sabores placenteros:</strong> Té caliente, fruta fresca, chocolate oscuro</li>
+                        <li><strong>Colores y luz:</strong> Luces tenues, colores cálidos, velas</li>
+                    </ul>
+                    <p><em>🎶 Tip: Crea una "caja de emergencia sensorial" con estos elementos.</em></p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>💭 Participación Mental Constructiva</h4>
+                    <p><strong>Objetivo:</strong> Ocupar tu mente con actividades que requieren concentración pero no generan estrés.</p>
+                    <ul>
+                        <li><strong>Rompecabezas o sudokus:</strong> Actividades que requieren concentración moderada</li>
+                        <li><strong>Lectura placentera:</strong> Novelas, cómics, revistas, poesía</li>
+                        <li><strong>Escritura terapéutica:</strong> Diario, cartas que no enviarás, listas de gratitud</li>
+                        <li><strong>Videos educativos o divertidos:</strong> Documentales de naturaleza, comedia suave</li>
+                        <li><strong>Aplicaciones de entrenamiento cerebral:</strong> Luminosity, Duolingo, apps de meditación</li>
+                        <li><strong>Arte y creatividad:</strong> Dibujar, colorear, origami, manualidades</li>
+                    </ul>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🤝 Conexión Social Nutritiva</h4>
+                    <p><strong>Objetivo:</strong> Recordar que no estás solo/a y recibir apoyo emocional.</p>
+                    <ul>
+                        <li><strong>Llamar a un ser querido:</strong> No necesariamente para hablar del problema</li>
+                        <li><strong>Abrazar a una mascota:</strong> El contacto físico libera oxitocina</li>
+                        <li><strong>Enviar mensajes de cariño:</strong> A familia, amigos, expresar gratitud</li>
+                        <li><strong>Hacer algo bueno por otros:</strong> Voluntariado, ayudar a un vecino</li>
+                        <li><strong>Participar en comunidades:</strong> Online o presenciales que te nutran</li>
+                        <li><strong>Recordar conexiones:</strong> Ver fotos de seres queridos, leer cartas especiales</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: #d4edda; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745;">
+                <strong>🎨 COMBO RÁPIDO (5 minutos):</strong><br>
+                1. <strong>Música favorita</strong> (2 min) → 2. <strong>Aroma agradable</strong> (1 min) → 3. <strong>Textura suave</strong> (1 min) → 4. <strong>Sabor placentero</strong> (1 min)
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🎯</span>Paso 4: Conexión con tu Propósito y Valores</h2>
+            <p><strong>⏱️ Tiempo: 5-10 minutos | Mejor momento: Cuando ya te sientas un poco más calmado/a</strong></p>
+            <p>Estas técnicas te reconectan con lo que <strong>realmente importa</strong> en tu vida, creando una razón poderosa para elegir estrategias saludables en lugar de conductas dañinas.</p>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                <strong>🧠 ¿Cómo funciona?</strong><br>
+                Cuando conectas con tus valores profundos, tu cerebro cambia el foco de "evitar dolor" a "crear significado". Esto te da fuerza para tomar decisiones que honran quien realmente eres.
+            </div>
+            
+            <h3>💖 Paso 4A: Inventario Profundo de Valores</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🔍 Descubre Tus Valores Fundamentales</h4>
+                    <p><strong>Instrucciones:</strong> Completa estas frases en voz alta o por escrito. Tómate tu tiempo:</p>
+                    <ul>
+                        <li><strong>"Lo que más valoro en mis relaciones es..."</strong><br>
+                        <em>Ej: "la honestidad, la lealtad, sentirme comprendido/a, poder confiar, reír juntos"</em></li>
+                        <li><strong>"En mi trabajo/estudios, lo más importante para mí es..."</strong><br>
+                        <em>Ej: "ayudar a otros, aprender cosas nuevas, ser creativo/a, sentirme útil, tener propósito"</em></li>
+                        <li><strong>"Como persona, quiero ser recordado/a por ser..."</strong><br>
+                        <em>Ej: "compasivo/a, valiente, alguien en quien se puede confiar, generoso/a, auténtico/a"</em></li>
+                        <li><strong>"Mis sueños más importantes incluyen..."</strong><br>
+                        <em>Ej: "viajar con mi familia, escribir un libro, ayudar a mi comunidad, tener una familia"</em></li>
+                        <li><strong>"Si fuera mi último día, me arrepentiría de no haber..."</strong><br>
+                        <em>Ej: "dicho 'te amo' más seguido, perseguido mis sueños, ayudado más a otros"</em></li>
+                    </ul>
+                    <p><strong>💡 Pregunta clave:</strong> "¿Cómo puedo honrar estos valores AHORA MISMO, incluso en crisis?"</p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🌟 Ejercicio del Funeral</h4>
+                    <p><strong>Visualización poderosa para clarificar valores:</strong></p>
+                    <ol>
+                        <li><strong>Imagina tu funeral</strong> (sé que suena fuerte, pero es muy revelador)</li>
+                        <li><strong>¿Qué dirían de ti?</strong> Familia, amigos, compañeros</li>
+                        <li><strong>¿Cómo te gustaría que te recordaran?</strong></li>
+                        <li><strong>¿Qué cualidades mencionarían?</strong></li>
+                        <li><strong>¿Qué impacto tuviste en sus vidas?</strong></li>
+                    </ol>
+                    <p><strong>🎯 Reflexión:</strong> "¿Estoy viviendo de manera que se cumplan esos deseos?"</p>
+                </div>
+            </div>
+            
+            <h3>🌱 Paso 4B: Defusión Cognitiva - Sepárate de Pensamientos Tóxicos</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🔄 Técnicas de Separación Mental</h4>
+                    <p><strong>Objetivo:</strong> Ver los pensamientos como eventos mentales, no como verdades absolutas.</p>
+                    <p><strong>🎭 Técnicas específicas:</strong></p>
+                    <ul>
+                        <li><strong>Etiquetado:</strong> "Estoy teniendo el pensamiento de que soy un fracaso"<br>
+                        <em>vs. "Soy un fracaso"</em></li>
+                        <li><strong>Perspectiva externa:</strong> "Mi mente me está diciendo que todo está perdido"<br>
+                        <em>vs. "Todo está perdido"</em></li>
+                        <li><strong>Observador interno:</strong> "Noto que aparece la historia del rechazo otra vez"<br>
+                        <em>vs. "Nadie me quiere"</em></li>
+                        <li><strong>Técnica del absurdo:</strong> Canta el pensamiento negativo con la melodía de "Cumpleaños Feliz"</li>
+                        <li><strong>Personificación:</strong> "Ahí está otra vez mi Crítico Interior hablando"</li>
+                    </ul>
+                    <p><strong>🎭 Recuerda:</strong> Tú no eres tus pensamientos. Eres quien los observa.</p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>📱 Técnica del Notificación Mental</h4>
+                    <p><strong>Trata los pensamientos como notificaciones del celular:</strong></p>
+                    <ol>
+                        <li><strong>Llega el pensamiento:</strong> "Ding! Nueva notificación mental"</li>
+                        <li><strong>Léelo sin juzgar:</strong> "Mensaje de Mi Mente: 'Eres un fracaso'"</li>
+                        <li><strong>Decide qué hacer:</strong> 
+                            <ul>
+                                <li>✅ "Responder" (actuar según el pensamiento)</li>
+                                <li>📋 "Guardar para después" (analizar luego)</li>
+                                <li>🗑️ "Eliminar" (ignorar completamente)</li>
+                                <li>🔕 "Silenciar" (reconocer pero no seguir)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Elegir conscientemente:</strong> "Decido silenciar esta notificación"</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <h3>🚪 Paso 4C: Toma de Decisiones Basada en Valores</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>⚖️ La Técnica de las Dos Puertas</h4>
+                    <p><strong>Visualización poderosa para tomar decisiones:</strong></p>
+                    <ol>
+                        <li><strong>Imagina dos puertas frente a ti:</strong>
+                            <ul>
+                                <li><strong>Puerta A (Evitación):</strong> Conductas que dañan pero alivian temporalmente (autolesión, aislamiento, consumo excesivo, etc.)</li>
+                                <li><strong>Puerta B (Valores):</strong> Conductas que honran tus valores aunque sean difíciles</li>
+                            </ul>
+                        </li>
+                        <li><strong>Proyección a 6 meses:</strong> "Si elijo la Puerta A, ¿dónde estaré?"</li>
+                        <li><strong>Proyección a 6 meses:</strong> "Si elijo la Puerta B, ¿dónde estaré?"</li>
+                        <li><strong>Pregúntate:</strong> "¿Cuál puerta me acerca a la persona que quiero ser?"</li>
+                        <li><strong>Da un paso literal:</strong> hacia la puerta que eliges</li>
+                    </ol>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🌟 Carta desde tu Futuro Sabio</h4>
+                    <p><strong>Tiempo:</strong> 5-10 minutos de escritura mental o real</p>
+                    <p><strong>📝 Instrucciones detalladas:</strong></p>
+                    <ol>
+                        <li><strong>Viaja en el tiempo:</strong> Imagina que estás celebrando tu cumpleaños dentro de 5 años</li>
+                        <li><strong>Has crecido enormemente:</strong> Superaste esta crisis y muchas otras</li>
+                        <li><strong>Eres más sabio/a:</strong> Más compasivo/a contigo mismo/a, más resiliente</li>
+                        <li><strong>Tienes perspectiva:</strong> Sabes cómo terminó esta historia difícil</li>
+                        <li><strong>Escribes una carta:</strong> A tu yo de hoy, desde esa sabiduría futura</li>
+                    </ol>
+                    <p><strong>💌 Ejemplo de carta:</strong></p>
+                    <p><em>"Querido/a [tu nombre], sé que ahora duele mucho y sientes que no hay salida. Desde donde estoy en 2030, puedo decirte que este momento que estás viviendo se convirtió en el punto de inflexión más importante de tu vida. No porque fuera fácil, sino porque decidiste usar las herramientas que tienes. La crisis pasó, pero las fortalezas que desarrollaste permanecieron para siempre. Confía en tu proceso. Con amor infinito, tu yo de 2030."</em></p>
+                </div>
+            </div>
+            
+            <div style="background: #d4edda; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745;">
+                <strong>🎯 EJERCICIO RÁPIDO (3 minutos):</strong><br>
+                1. Nombra 3 personas que amas → 2. Di por qué las amas → 3. Pregúntate: "¿Qué me dirían ahora mismo?" → 4. Actúa desde ese amor hacia ti mismo/a
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🧠</span>Paso 5: Reestructuración Cognitiva - Transformando Pensamientos</h2>
+            <p><strong>⏱️ Tiempo: 10-15 minutos | Mejor momento: Cuando puedas pensar con más claridad</strong></p>
+            <p>Estas técnicas te ayudan a <strong>cuestionar y transformar</strong> los pensamientos automáticos que alimentan la crisis. No se trata de "pensar positivo", sino de pensar de manera más <strong>realista y útil</strong>.</p>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                <strong>🔬 ¿Cómo funciona?</strong><br>
+                Los pensamientos automáticos son como "software mental" que se ejecuta sin que lo revises. La TCC te enseña a ser el "programador" de tu propia mente, actualizando el software cuando no funciona bien.
+            </div>
+            
+            <h3>🔍 Paso 5A: Detecta el Pensamiento Problemático</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>🎯 Identifica el "Pensamiento Caliente"</h4>
+                    <p><strong>Pregúntate:</strong> "¿Qué pensamiento específico me está causando MÁS dolor emocional ahora mismo?"</p>
+                    <p><strong>🔥 Ejemplos comunes de pensamientos calientes:</strong></p>
+                    <ul>
+                        <li><strong>Catastrofismo:</strong> "No puedo soportar esto", "Esto es el fin"</li>
+                        <li><strong>Generalización:</strong> "Siempre me pasa lo mismo", "Nunca voy a mejorar"</li>
+                        <li><strong>Personalización:</strong> "Es mi culpa", "Soy un desastre"</li>
+                        <li><strong>Lectura de mente:</strong> "Nadie me entiende", "Piensan que soy patético"</li>
+                        <li><strong>Filtro mental:</strong> "Todo está mal", "No hay nada bueno"</li>
+                        <li><strong>Etiquetado:</strong> "Soy un fracaso total", "No sirvo para nada"</li>
+                    </ul>
+                    <p><strong>💡 Tip:</strong> El pensamiento más problemático suele generar las emociones más intensas (8-10/10 en intensidad).</p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🕵️ Caza de Distorsiones Cognitivas</h4>
+                    <p><strong>¿Tu pensamiento encaja en alguno de estos patrones erróneos?</strong></p>
+                    <ul>
+                        <li><strong>Todo o nada:</strong> "Siempre/nunca", "todo/nada", "completamente/para nada"</li>
+                        <li><strong>Filtro mental:</strong> Solo ves los aspectos negativos, ignoras los positivos</li>
+                        <li><strong>Lectura de mente:</strong> "Seguro piensan que...", "Sé que está molesto porque..."</li>
+                        <li><strong>Adivinación:</strong> "Va a ser terrible", "Todo va a salir mal"</li>
+                        <li><strong>Magnificación:</strong> Hacer pequeños problemas gigantescos</li>
+                        <li><strong>Minimización:</strong> Restar importancia a logros o aspectos positivos</li>
+                        <li><strong>Razonamiento emocional:</strong> "Me siento inútil, por lo tanto soy inútil"</li>
+                        <li><strong>Imperativos:</strong> "Debería", "tengo que", "es necesario que"</li>
+                    </ul>
+                    <p><strong>🎭 Recuerda:</strong> Reconocer la distorsión ya reduce automáticamente su poder sobre ti.</p>
+                </div>
+            </div>
+            
+            <h3>⚖️ Paso 5B: Examina la Evidencia como Detective</h3>
+            <div class="technique-card" style="margin: 20px 0;">
+                <h4>🔬 El Tribunal del Pensamiento</h4>
+                <p><strong>Imagina que eres un detective objetivo investigando la veracidad de tu pensamiento:</strong></p>
+                
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                    <p><strong>📋 EVIDENCIA A FAVOR del pensamiento:</strong></p>
+                    <ul>
+                        <li>¿Qué hechos concretos y específicos apoyan este pensamiento?</li>
+                        <li>¿Qué experiencias reales y recientes lo respaldan?</li>
+                        <li>¿Qué observaciones objetivas (no interpretaciones) lo confirman?</li>
+                        <li>Si fuera un juez, ¿qué evidencia sólida presentarías?</li>
+                    </ul>
+                    
+                    <p><strong>📋 EVIDENCIA EN CONTRA del pensamiento:</strong></p>
+                    <ul>
+                        <li>¿Qué hechos contradicen completamente este pensamiento?</li>
+                        <li>¿Qué experiencias positivas estoy olvidando convenientemente?</li>
+                        <li>¿Qué me diría mi mejor amigo/a sobre este pensamiento?</li>
+                        <li>¿Hay alguna interpretación alternativa de la situación?</li>
+                        <li>¿Qué evidencia tendría en contra si fuera en un tribunal real?</li>
+                    </ul>
+                </div>
+                
+                <p><strong>💡 Ejemplo práctico completo:</strong></p>
+                <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #4caf50;">
+                    <p><strong>Pensamiento caliente:</strong> "Nadie me entiende realmente"</p>
+                    <p><strong>Evidencia a favor:</strong> "Mi mamá me gritó ayer cuando le expliqué cómo me siento", "Mi amigo no contestó mi mensaje donde le contaba mi problema"</p>
+                    <p><strong>Evidencia en contra:</strong> "Mi hermana me abrazó anoche cuando me vio llorar", "Mi terapeuta me escucha atentamente cada semana", "Mi mascota siempre se queda conmigo cuando estoy triste", "Mi amigo tal vez no contestó porque está ocupado, no porque no le importe"</p>
+                    <p><strong>Veredicto:</strong> "Algunas personas a veces no me entienden completamente, pero tengo varias personas que sí se preocupan por mí y hacen esfuerzos por comprenderme"</p>
+                </div>
+            </div>
+            
+            <h3>🔄 Paso 5C: Crea Pensamientos Más Útiles y Realistas</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>✨ Reformulación Gradual</h4>
+                    <p><strong>Convierte pensamientos absolutos en pensamientos flexibles y precisos:</strong></p>
+                    <ul>
+                        <li><strong>"Nunca"</strong> → <strong>"Pocas veces"</strong> → <strong>"A veces no"</strong></li>
+                        <li><strong>"Siempre"</strong> → <strong>"Frecuentemente"</strong> → <strong>"En algunas situaciones"</strong></li>
+                        <li><strong>"Todo"</strong> → <strong>"Muchas cosas"</strong> → <strong>"Algunas áreas de mi vida"</strong></li>
+                        <li><strong>"Imposible"</strong> → <strong>"Muy difícil"</strong> → <strong>"Desafiante en este momento"</strong></li>
+                        <li><strong>"Soy un fracaso"</strong> → <strong>"Tengo dificultades"</strong> → <strong>"Estoy aprendiendo en esta área específica"</strong></li>
+                        <li><strong>"No puedo soportarlo"</strong> → <strong>"Es muy difícil"</strong> → <strong>"Es doloroso pero manejable"</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>🌉 Pensamientos Puente (Cuando lo positivo se siente falso)</h4>
+                    <p><strong>Si un pensamiento muy positivo se siente mentiroso, usa estos "puentes" realistas:</strong></p>
+                    <ul>
+                        <li><strong>En lugar de:</strong> "Todo va a estar perfecto" → <strong>Puente:</strong> "Puedo manejar lo que venga paso a paso"</li>
+                        <li><strong>En lugar de:</strong> "Soy increíble" → <strong>Puente:</strong> "Estoy aprendiendo y creciendo como persona"</li>
+                        <li><strong>En lugar de:</strong> "Nunca más tendré problemas" → <strong>Puente:</strong> "He superado dificultades antes y puedo hacerlo de nuevo"</li>
+                        <li><strong>En lugar de:</strong> "Soy el mejor" → <strong>Puente:</strong> "Tengo fortalezas únicas y áreas donde puedo mejorar"</li>
+                        <li><strong>En lugar de:</strong> "Todo es fácil" → <strong>Puente:</strong> "Esto es temporal y tengo recursos para afrontarlo"</li>
+                    </ul>
+                    <p><strong>🔑 Clave:</strong> Los pensamientos puente deben sentirse creíbles pero esperanzadores.</p>
+                </div>
+            </div>
+            
+            <h3>🎬 Paso 5D: Plan de Acción Basado en el Nuevo Pensamiento</h3>
+            <div class="technique-card" style="margin: 20px 0;">
+                <h4>👣 De Pensamiento Reformulado a Acción Concreta</h4>
+                <p><strong>Pregúntate:</strong> "Basándome en mi pensamiento más realista y útil, ¿qué pequeña acción específica puedo tomar AHORA MISMO?"</p>
+                
+                <p><strong>🎯 Ejemplos detallados de acciones pequeñas pero poderosas:</strong></p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <ul>
+                        <li><strong>Si el nuevo pensamiento es "Puedo buscar ayuda cuando la necesito":</strong><br>
+                        → Acción inmediata: Enviar mensaje específico a una persona de confianza: "Hola, estoy pasando por un momento difícil y me ayudaría mucho poder hablar contigo"</li>
+                        <li><strong>Si el nuevo pensamiento es "Esto es temporal aunque doloroso":</strong><br>
+                        → Acción inmediata: Escribir en un calendario o papel cuándo esperas sentirte al menos un poco mejor (ej: "En 3 días")</li>
+                        <li><strong>Si el nuevo pensamiento es "He superado cosas difíciles antes":</strong><br>
+                        → Acción inmediata: Hacer una lista específica de 3 dificultades que ya superaste y cómo lo hiciste</li>
+                        <li><strong>Si el nuevo pensamiento es "Puedo tomar esto paso a paso":</strong><br>
+                        → Acción inmediata: Escribir solo el próximo paso más pequeño posible (ej: "Tomarme un vaso de agua")</li>
+                        <li><strong>Si el nuevo pensamiento es "Tengo fortalezas que a veces olvido":</strong><br>
+                        → Acción inmediata: Preguntarle a alguien que te quiere: "¿Qué fortaleza ves en mí que yo tal vez no veo?"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>📝 Paso 5E: Registro de Pensamientos (Para usar después)</h3>
+            <div class="technique-card" style="margin: 20px 0;">
+                <h4>📊 Plantilla de Auto-Registro</h4>
+                <p><strong>Cuando tengas más tiempo, completa esta tabla para hacer seguimiento:</strong></p>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                    <p><strong>1. Situación:</strong> ¿Qué pasó exactamente?</p>
+                    <p><strong>2. Emoción:</strong> ¿Qué sentí? (del 1 al 10)</p>
+                    <p><strong>3. Pensamiento automático:</strong> ¿Qué pasó por mi mente?</p>
+                    <p><strong>4. Distorsión identificada:</strong> ¿Qué patrón erróneo usé?</p>
+                    <p><strong>5. Evidencia a favor:</strong> ¿Qué apoya este pensamiento?</p>
+                    <p><strong>6. Evidencia en contra:</strong> ¿Qué lo contradice?</p>
+                    <p><strong>7. Pensamiento más realista:</strong> ¿Cuál es una versión más balanceada?</p>
+                    <p><strong>8. Nueva emoción:</strong> ¿Cómo me siento ahora? (del 1 al 10)</p>
+                    <p><strong>9. Acción tomada:</strong> ¿Qué hice diferente?</p>
+                </div>
+            </div>
+            
+            <div style="background: #d4edda; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745;">
+                <strong>🧠 FÓRMULA RÁPIDA PARA EMERGENCIAS (5 minutos):</strong><br>
+                1. <strong>Pensamiento problemático:</strong> "________________" → 
+                2. <strong>¿Qué distorsión es?</strong> "Esto es ________________ (generalización/catastrofismo/etc.)" → 
+                3. <strong>Evidencia en contra:</strong> "Pero también es cierto que ________________" → 
+                4. <strong>Pensamiento más útil:</strong> "Una perspectiva más realista sería ________________" → 
+                5. <strong>Acción pequeña AHORA:</strong> "Inmediatamente voy a ________________"
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">📚</span>Paso 6: Reescribe Tu Historia - Recupera Tu Poder</h2>
+            <p><strong>⏱️ Tiempo: 10-20 minutos | Mejor momento: Cuando tengas más claridad mental</strong></p>
+            <p>Esta técnica te ayuda a <strong>separar los problemas de tu identidad</strong> y a reconectarte con tu historia de fortaleza y superación. No eres tu crisis, eres alguien que está viviendo una crisis temporalmente.</p>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                <strong>📖 ¿Cómo funciona?</strong><br>
+                Los problemas pueden "secuestrar" nuestra identidad, haciéndonos creer que SOMOS el problema. La terapia narrativa te ayuda a ver que TÚ eres el héroe de tu historia, y los problemas son obstáculos temporales que puedes superar.
+            </div>
+            
+            <h3>🎭 Externalización del Problema</h3>
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>👤 Separa el Problema de Tu Persona</h4>
+                    <p><strong>En lugar de decir "SOY..." di "ESTOY EXPERIMENTANDO..."</strong></p>
+                    
+                    <p><strong>🔄 Transformaciones de lenguaje:</strong></p>
+                    <ul>
+                        <li><strong>"Soy ansioso/a"</strong> → <strong>"La Ansiedad me está visitando hoy"</strong></li>
+                        <li><strong>"Soy depresivo/a"</strong> → <strong>"La Tristeza está muy presente en mi vida últimamente"</strong></li>
+                        <li><strong>"Soy un desastre"</strong> → <strong>"El Caos está tratando de convencerme de que no tengo control"</strong></li>
+                        <li><strong>"Soy un fracaso"</strong> → <strong>"La Autocrítica está siendo muy fuerte conmigo"</strong></li>
+                        <li><strong>"No sirvo para nada"</strong> → <strong>"La Desesperanza está nublando mi vista de mis capacidades"</strong></li>
+                    </ul>
+                    <p><strong>💪 Afirmación clave:</strong> "Yo no SOY mi problema. Mi problema es algo que TENGO, no algo que SOY."</p>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>💎 Descubre Evidencias de Tu Poder</h4>
+                    <p><strong>Pregúntate y responde específicamente:</strong></p>
+                    
+                    <p><strong>🔍 Inventario de victorias pasadas:</strong></p>
+                    <ul>
+                        <li><strong>"¿Cuándo fue la última vez que me sentí así y logré superarlo?"</strong><br>
+                        <em>Describe específicamente cómo lo hiciste</em></li>
+                        <li><strong>"¿Qué crisis anteriores he superado que parecían imposibles?"</strong><br>
+                        <em>Incluye crisis pequeñas y grandes</em></li>
+                        <li><strong>"¿Qué fortalezas usé entonces que tal vez estoy olvidando ahora?"</strong><br>
+                        <em>Ej: perseverancia, humor, búsqueda de ayuda, creatividad</em></li>
+                        <li><strong>"¿Quién me ayudó en esos momentos y sigue disponible?"</strong><br>
+                        <em>Personas, mascotas, actividades, lugares</em></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="background: #d4edda; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #28a745;">
+                <strong>📚 EJERCICIO RÁPIDO (3 minutos):</strong><br>
+                1. <strong>Nombra tu problema:</strong> "La _______ está visitándome" → 
+                2. <strong>Recuerda una victoria:</strong> "Antes superé _______" → 
+                3. <strong>Pregunta sabia:</strong> "Mi yo sabio haría _______" → 
+                4. <strong>Nueva narrativa:</strong> "Soy alguien que _______ a pesar de las dificultades"
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">💡</span>Ten en Cuenta Estas Opciones Adicionales</h2>
+            <p><strong>Recordatorios importantes de recursos y técnicas que también puedes usar cuando los necesites:</strong></p>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🏋️</span>Mejora el Momento en el que Estás</h2>
+            <p><strong>Enfoca tu atención en las sensaciones físicas que acompañan las tareas que realizas:</strong></p>
+            <ol class="step-list">
+                <li>Respira profundamente</li>
+                <li>Cambia la expresión facial. Sonríe a medias o haz muecas extrañas</li>
+                <li>Trata de relajar tus músculos tensando y relajando cada grupo muscular</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🤝</span>Conecta con tu Red de Apoyo</h2>
+            <ol class="step-list">
+                <li>Toma un teléfono fijo o celular</li>
+                <li>Marca el número de teléfono de tu amigo(a), familiar y/o persona de apoyo de confianza</li>
+                <li>Coméntale tu estado, lo que has hecho hasta el momento, y los pasos que has seguido</li>
+                <li>No termines la llamada. Puedes realizar nuevamente alguno de los pasos anteriores mientras hablas con él</li>
+                <li>Si llegase a interrumpirse la comunicación, llámalo (la) nuevamente</li>
+                <li>Contesta el teléfono en caso de que tu amigo(a) te devuelva la llamada</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">🚨</span>Llama a la Línea de Emergencias / Salud Mental</h2>
+            <ol class="step-list">
+                <li>Toma un teléfono fijo o celular</li>
+                <li>Comunícate con la línea 123 (Número único de seguridad y emergencias), o línea 106 (Escucha activa 24/7)</li>
+                <li>Comenta al operador tu estado, lo que has hecho hasta el momento, y los pasos que has seguido</li>
+                <li>Sigue sus instrucciones. No termines la llamada</li>
+                <li>Si llegase a interrumpirse la comunicación, llama nuevamente a las líneas 123 o 106</li>
+                <li>Permanece en la línea hasta que la ayuda llegue a ti</li>
+            </ol>
+        </div>
+        
+        <div class="interactive-section">
+            <h2><span class="icon">📊</span>Personaliza Tu Plan</h2>
+            <p><strong>Califica estas estrategias del 1 al 5</strong> según qué tan efectivas son para ti (5 = más efectiva):</p>
+            
+            <div class="strategy-ranker">
+                <div class="strategy-item">
+                    <span>🛡️ Paso 1: Técnicas de Estabilización Inmediata</span>
+                    <select id="strategy1" onchange="updateProgress()">
+                        <option value="">Califica del 1 al 5</option>
+                        <option value="1">1 - No muy efectiva</option>
+                        <option value="2">2 - Poco efectiva</option>
+                        <option value="3">3 - Moderadamente efectiva</option>
+                        <option value="4">4 - Muy efectiva</option>
+                        <option value="5">5 - Extremadamente efectiva</option>
+                    </select>
+                </div>
+                
+                <div class="strategy-item">
+                    <span>🧘 Paso 2: Atención Plena - Anclaje en el Presente</span>
+                    <select id="strategy2" onchange="updateProgress()">
+                        <option value="">Califica del 1 al 5</option>
+                        <option value="1">1 - No muy efectiva</option>
+                        <option value="2">2 - Poco efectiva</option>
+                        <option value="3">3 - Moderadamente efectiva</option>
+                        <option value="4">4 - Muy efectiva</option>
+                        <option value="5">5 - Extremadamente efectiva</option>
+                    </select>
+                </div>
+                
+                <div class="strategy-item">
+                    <span>🎨 Paso 3: Distracción Saludable y Autocuidado</span>
+                    <select id="strategy3" onchange="updateProgress()">
+                        <option value="">Califica del 1 al 5</option>
+                        <option value="1">1 - No muy efectiva</option>
+                        <option value="2">2 - Poco efectiva</option>
+                        <option value="3">3 - Moderadamente efectiva</option>
+                        <option value="4">4 - Muy efectiva</option>
+                        <option value="5">5 - Extremadamente efectiva</option>
+                    </select>
+                </div>
+                
+                <div class="strategy-item">
+                    <span>🎯 Paso 4: Conexión con tu Propósito y Valores</span>
+                    <select id="strategy4" onchange="updateProgress()">
+                        <option value="">Califica del 1 al 5</option>
+                        <option value="1">1 - No muy efectiva</option>
+                        <option value="2">2 - Poco efectiva</option>
+                        <option value="3">3 - Moderadamente efectiva</option>
+                        <option value="4">4 - Muy efectiva</option>
+                        <option value="5">5 - Extremadamente efectiva</option>
+                    </select>
+                </div>
+                
+                <div class="strategy-item">
+                    <span>🧠 Paso 5: Reestructuración Cognitiva - Transformando Pensamientos</span>
+                    <select id="strategy5" onchange="updateProgress()">
+                        <option value="">Califica del 1 al 5</option>
+                        <option value="1">1 - No muy efectiva</option>
+                        <option value="2">2 - Poco efectiva</option>
+                        <option value="3">3 - Moderadamente efectiva</option>
+                        <option value="4">4 - Muy efectiva</option>
+                        <option value="5">5 - Extremadamente efectiva</option>
+                    </select>
+                </div>
+                
+                <div class="strategy-item">
+                    <span>📚 Paso 6: Reescribe Tu Historia - Recupera Tu Poder</span>
+                    <select id="strategy6" onchange="updateProgress()">
+                        <option value="">Califica del 1 al 5</option>
+                        <option value="1">1 - No muy efectiva</option>
+                        <option value="2">2 - Poco efectiva</option>
+                        <option value="3">3 - Moderadamente efectiva</option>
+                        <option value="4">4 - Muy efectiva</option>
+                        <option value="5">5 - Extremadamente efectiva</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">Completa las calificaciones para ver tu progreso (0/6 estrategias calificadas)</p>
+            
+            <button class="btn" onclick="generatePocketCard()">📱 Generar Mi Tarjeta de Bolsillo</button>
+            <button class="btn" onclick="showResults()">📊 Ver Mis Estrategias Priorizadas</button>
+        </div>
+        
+        <div class="pocket-card" id="pocketCard">
+            <h3>🎒 Mi Tarjeta de Crisis Personal</h3>
+            <div id="pocketContent">
+                <!-- Contenido generado dinámicamente -->
+            </div>
+            <p><em>Imprime esta tarjeta y llévala contigo. Cuando la necesites, estará ahí.</em></p>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">📞</span>Mi Red de Apoyo</h2>
+            <p><strong>Completa esta información y tenla siempre disponible:</strong></p>
+            
+            <div class="technique-grid">
+                <div class="technique-card">
+                    <h4>👨‍⚕️ Profesionales de Salud</h4>
+                    <ul>
+                        <li>Psicólogo/a: _________________</li>
+                        <li>Psiquiatra: _________________</li>
+                        <li>Médico de cabecera: _________</li>
+                        <li>Hospital de referencia: ______</li>
+                    </ul>
+                </div>
+                
+                <div class="technique-card">
+                    <h4>❤️ Personas de Confianza</h4>
+                    <ul>
+                        <li>Persona 1: _________________</li>
+                        <li>Persona 2: _________________</li>
+                        <li>Persona 3: _________________</li>
+                        <li>Familiar cercano: ___________</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2><span class="icon">💪</span>Mi Carta de Fortaleza</h2>
+            <p><strong>Escribe esto para ti mismo/a:</strong></p>
+            <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #e74c3c;">
+                <p><em>"Querido/a [tu nombre],</em></p>
+                <br>
+                <p><em>Si estás leyendo esto, significa que estás pasando por un momento difícil. Quiero que recuerdes que:</em></p>
+                <br>
+                <ul>
+                    <li><em>Has superado momentos difíciles antes</em></li>
+                    <li><em>Eres más fuerte de lo que crees</em></li>
+                    <li><em>Este sentimiento es temporal</em></li>
+                    <li><em>Hay personas que te aman y te apoyan</em></li>
+                    <li><em>El futuro puede ser diferente al presente</em></li>
+                </ul>
+                <br>
+                <p><em>Usa las herramientas de este plan. Funcionan. Tú funcionas. Eres valioso/a.</em></p>
+                <br>
+                <p><em>Con amor y esperanza,<br>Tu yo más sabio/a</em></p>
+            </div>
+        </div>
+        
+        <div class="section" style="background: linear-gradient(135deg, #e8f5e8 0%, #d4f1d4 100%); border-left: 5px solid #27ae60; text-align: center;">
+            <h2 style="color: #27ae60; margin-bottom: 15px;"><span class="icon">📋</span>Información del Plan</h2>
+            <p style="margin-bottom: 15px; font-size: 1em; color: #2c3e50;">
+                <strong>Este plan de crisis ha sido diseñado para brindarte herramientas prácticas de autocuidado emocional que puedes usar cuando más las necesites.</strong>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #7f8c8d; font-style: italic;">
+                Este material es de apoyo y no reemplaza la atención profesional especializada.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function updateProgress() {
+            const selects = document.querySelectorAll('.strategy-ranker select');
+            let completed = 0;
+            
+            selects.forEach(select => {
+                if (select.value !== '') {
+                    completed++;
+                }
+            });
+            
+            const percentage = (completed / selects.length) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = 
+                `Completa las calificaciones para ver tu progreso (${completed}/6 estrategias calificadas)`;
+        }
+        
+        function showResults() {
+            const strategies = [
+                { name: 'Paso 1: Técnicas de Estabilización Inmediata', id: 'strategy1', icon: '🛡️' },
+                { name: 'Paso 2: Atención Plena - Anclaje en el Presente', id: 'strategy2', icon: '🧘' },
+                { name: 'Paso 3: Distracción Saludable y Autocuidado', id: 'strategy3', icon: '🎨' },
+                { name: 'Paso 4: Conexión con tu Propósito y Valores', id: 'strategy4', icon: '🎯' },
+                { name: 'Paso 5: Reestructuración Cognitiva', id: 'strategy5', icon: '🧠' },
+                { name: 'Paso 6: Reescribe Tu Historia', id: 'strategy6', icon: '📚' }
+            ];
+            
+            const results = strategies.map(strategy => ({
+                ...strategy,
+                score: parseInt(document.getElementById(strategy.id).value) || 0
+            })).sort((a, b) => b.score - a.score);
+            
+            let message = '📊 TUS ESTRATEGIAS PRIORIZADAS:\n\n';
+            results.forEach((strategy, index) => {
+                if (strategy.score > 0) {
+                    message += `${index + 1}. ${strategy.icon} ${strategy.name}: ${strategy.score}/5\n`;
+                }
+            });
+            
+            if (results.filter(r => r.score > 0).length === 0) {
+                message = 'Por favor, califica al menos una estrategia primero.';
+            }
+            
+            alert(message);
+        }
+        
+        function generatePocketCard() {
+            const strategies = [
+                { name: 'Estabilización Inmediata', id: 'strategy1', icon: '🛡️', description: 'Agua fría, respiración 4-4-6, ejercicio' },
+                { name: 'Atención Plena', id: 'strategy2', icon: '🧘', description: '5-4-3-2-1, respiración consciente' },
+                { name: 'Autocuidado', id: 'strategy3', icon: '🎨', description: 'Música, naturaleza, conexión social' },
+                { name: 'Conexión con Valores', id: 'strategy4', icon: '🎯', description: '"Estoy teniendo el pensamiento..."' },
+                { name: 'Reestructuración Cognitiva', id: 'strategy5', icon: '🧠', description: 'Evidencias a favor/contra, reformular' },
+                { name: 'Reescribe Tu Historia', id: 'strategy6', icon: '📚', description: 'Externalizar problema, encontrar fortalezas' }
+            ];
+            
+            const results = strategies.map(strategy => ({
+                ...strategy,
+                score: parseInt(document.getElementById(strategy.id).value) || 0
+            })).sort((a, b) => b.score - a.score).slice(0, 3);
+            
+            let cardContent = `
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <strong>🚨 EMERGENCIA: 123 (Colombia) | 106 (Escucha activa)</strong>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>MIS TOP 3 ESTRATEGIAS:</strong><br>
+            `;
+            
+            results.forEach((strategy, index) => {
+                if (strategy.score > 0) {
+                    cardContent += `${index + 1}. ${strategy.icon} ${strategy.name} (${strategy.score}/5)<br>`;
+                    cardContent += `   ${strategy.description}<br>`;
+                }
+            });
+            
+            cardContent += `
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong>💨 RESPIRACIÓN DE EMERGENCIA:</strong><br>
+                    Inhala 4 seg → Mantén 4 seg → Exhala 6 seg
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <strong>🧘 CONEXIÓN A TIERRA 5-4-3-2-1:</strong><br>
+                    5 ver, 4 tocar, 3 escuchar, 2 oler, 1 saborear
+                </div>
+                <div>
+                    <strong>💪 RECORDATORIO:</strong><br>
+                    "He superado crisis antes. Esta también pasará. Soy más fuerte de lo que creo."
+                </div>
+            `;
+            
+            document.getElementById('pocketContent').innerHTML = cardContent;
+            document.getElementById('pocketCard').style.display = 'block';
+            document.getElementById('pocketCard').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
